@@ -150,9 +150,6 @@ class TrainerOptimizersMixin(ABC):
                             'The "interval" key in lr scheduler dict must be "step" or "epoch"'
                             f' but is "{scheduler["interval"]}"'
                         )
-                    scheduler["reduce_on_plateau"] = isinstance(
-                        scheduler["scheduler"], optim.lr_scheduler.ReduceLROnPlateau
-                    )
                     if scheduler["reduce_on_plateau"] and scheduler.get("monitor", None) is None:
                         raise MisconfigurationException(
                             "The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used."
